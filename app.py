@@ -4,16 +4,16 @@ import os
 
 app = Flask(__name__)
 
-api_key = os.getenv("API_KEY")
-genai.configure(api_key)
-model = genai.GenerativeModel("gemini-1.5-flash")
-
 @app.route('/')
 def index():
     return render_template('index.html')
 
 @app.route('/chat', methods=['POST'])
 def chat():
+    api_key = os.getenv("API_KEY")
+    genai.configure(api_key)
+    model = genai.GenerativeModel("gemini-1.5-flash")
+
     user_input = request.json.get('message')
     response = model.generate_content(user_input)
     return jsonify({"response": response.text})
