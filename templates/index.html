@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <title>AI Chatbot</title>
+</head>
+<body>    
+    <div class="container">
+        <header>
+        <h1>✨ Read This Next</h1>
+        <p>Type in your favorite books, what genre you would like your next read to be, and discover your next favorite book with the power of AI!</p>
+        </header>
+    
+        <section class="inputs">
+        <div class="input-group">
+            <label for="liked">Books you've enjoyed recently:</label>
+            <textarea id="liked" placeholder="E.g., The Great Gatsby, Percy Jackson & The Olympians, etc."></textarea>
+        </div>
+    
+        <div class="input-group">
+            <label for="genre">What genre would you like to read next?</label>
+            <input type="text" id="genre" placeholder="E.g., Contemporary, Fantasy, Romance, Thriller, Humor">
+        </div>
+    
+        <div class="input-group">
+            <button id="send">Get Recommendations</button>
+        </div>
+        </section>
+    
+        <section id="recommendations" class="recommendations">
+        <h2 id="rec-heading"></h2>
+        <div id="load"></div>
+        <div id="books"></div>
+        </section>
+    </div>
+        
+    <script>
+        document.getElementById('send').onclick = function() {
+            const likes = document.getElementById('liked').value;
+            if (likes.trim() === '') return;
+
+            const genre = document.getElementById('genre').value;
+            if (genre.trim() === '') return;
+            
+            const recs = document.getElementById('rec-heading');
+            recs.innerHTML = `✨ Recommended Books`;
+
+            const load = document.getElementById('load');
+            load.innerHTML = `<article aria-busy="true"></article>`;
+
+            const prompt = `Based on the following books- these are books I liked: ${likes} and the genre I want to read next: ${genre}, recommend 10 books. RESPOND WITHOUT ANY MARKDOWN FORMATTING AND SEPARATE BOOK NAMES BY '*' CHARACTER.`;
+
+            fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: prompt })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const booksDiv = document.getElementById('books');
+                const books = data.response.split('*');
+
+                load.remove();
+
+                books.forEach(book => {
+                    booksDiv.innerHTML += `<article>${book}</article>`;
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        };
+    </script>
+</body>
+</html>
