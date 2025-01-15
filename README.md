@@ -1,21 +1,16 @@
-# I.DIY! - A Project for Sustainability 🏆
+# Read This Next
 
-I.DIY! is a web-based project built for [Nature Hacks 2024.](https://naturehacks.devpost.com/)
+[Read This Next](https://read-this-next-ten.vercel.app/) is an AI-powered web app that gives you book recommendations based on your input.
 
-Built around this year's theme of sustainability, this project aims to promote it by helping users instantly find DIY projects based on recyclables they have - cardboard boxes, plastic bottles, etc.
-
-The site also has an interactive game that will test the player's trash sorting ability!
-
-🏆 This project earned **3rd place in the college-level** competition at Nature Hacks 2024. View it [here.](https://devpost.com/software/i-diy)
-
+Simply enter titles of books you've enjoyed recently and the genre you would like your next read to be - the app uses the Gemini AI model to generate a list of recommended books.
 
 ## Built Using
 
 - HTML
-- Pico CSS
+- [Pico CSS](https://picocss.com/)
 - JavaScript
 - Flask
-- Google's Gemini
+- [Google's Gemini](https://ai.google.dev/gemini-api/docs/models/gemini#gemini-1.5-flash-8b)
 
 ## Try it out
 ✨ [Read This Next](https://i-diy.netlify.app/)
