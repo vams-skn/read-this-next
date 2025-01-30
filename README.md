@@ -13,4 +13,4 @@ Simply enter titles of books you've enjoyed recently and the genre you would lik
 - [Google's Gemini](https://ai.google.dev/gemini-api/docs/models/gemini#gemini-1.5-flash-8b)
 
 ## Try it out
-✨ [Read This Next](https://i-diy.netlify.app/)
+✨ [Read This Next](https://read-this-next-ten.vercel.app/)
