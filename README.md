@@ -4,8 +4,9 @@
 
 Simply enter titles of books you've enjoyed recently and the genre you would like your next read to be - the app uses the Gemini AI model to generate a list of recommended books.
 
-## Built Using
+🏆 This project won the 'super cool awesome' prize! View it [here.](https://devpost.com/software/read-this-next)
 
+## Built Using
 - HTML
 - [Pico CSS](https://picocss.com/)
 - JavaScript
